@@ -12,7 +12,7 @@ public struct ProductButton: View {
     let color: Color
     var action: (() -> Void)? = nil
     
-    init(title: String, color: Color, action: (() -> Void)? = nil) {
+    public init(title: String, color: Color, action: (() -> Void)? = nil) {
         self.title = title
         self.color = color
         self.action = action

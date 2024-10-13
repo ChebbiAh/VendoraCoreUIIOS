@@ -12,7 +12,7 @@ public struct CategoryButton: View {
     let backgroundColor: Color
     var action: (() -> Void)? = nil
     
-    init(title: String, backgroundColor: Color, action: (() -> Void)? = nil) {
+    public init(title: String, backgroundColor: Color, action: (() -> Void)? = nil) {
         self.title = title
         self.backgroundColor = backgroundColor
         self.action = action
