@@ -7,13 +7,20 @@
 
 import SwiftUI
 
-struct ButtonVendora: View {
+public struct ButtonVendora: View {
     let title: String
     var titleColor = Color.white
     var backgroundColor: Color = AppColors.backgroundPrimary
     var action: (() -> Void)? = nil
     
-    var body: some View {
+    public init(title: String, titleColor: Color = Color.white, backgroundColor: Color = AppColors.backgroundPrimary, action: (() -> Void)? = nil) {
+        self.title = title
+        self.titleColor = titleColor
+        self.backgroundColor = backgroundColor
+        self.action = action
+    }
+    
+    public var body: some View {
         Button(action: {
             action?()
         }) {

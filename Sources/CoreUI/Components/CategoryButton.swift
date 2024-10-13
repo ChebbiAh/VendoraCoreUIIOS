@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct CategoryButton: View {
+public struct CategoryButton: View {
     let title: String
     let backgroundColor: Color
     var action: (() -> Void)? = nil
     
-    var body: some View {
+    init(title: String, backgroundColor: Color, action: (() -> Void)? = nil) {
+        self.title = title
+        self.backgroundColor = backgroundColor
+        self.action = action
+    }
+    
+    public var body: some View {
         ButtonVendora(title: title, backgroundColor: backgroundColor) {
             action?()
         }

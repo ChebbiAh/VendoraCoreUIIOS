@@ -8,8 +8,8 @@
 import SwiftUI
 import Combine
 
-class KeypadViewModel: ObservableObject {
-    @Published var input: String = ""  // Holds the input from the keypad
+public class KeypadViewModel: ObservableObject {
+    @Published public var input: String = ""  // Holds the input from the keypad
 
     // Function to handle button presses
     func handleButtonPress(_ label: String?) {
@@ -28,13 +28,17 @@ class KeypadViewModel: ObservableObject {
     }
 }
 
-struct KeypadView: View {
+public struct KeypadView: View {
     @ObservedObject var viewModel: KeypadViewModel  // Inject the ViewModel into the view
 
     let buttonSpacing: CGFloat = 8
     let buttonSize: CGFloat = 75
+    
+    public init(viewModel: KeypadViewModel) {
+        self.viewModel = viewModel
+    }
 
-    var body: some View {
+    public var body: some View {
         VStack(spacing: buttonSpacing) {
             // Display the input field
             Text(viewModel.input)
@@ -62,7 +66,7 @@ struct KeypadView: View {
     }
 }
 
-struct KeypadButton: View {
+public struct KeypadButton: View {
     var label: String? = nil
     var icon: String? = nil
     var backgroundColor: Color = Color.gray
@@ -70,7 +74,7 @@ struct KeypadButton: View {
     var size: CGFloat = 75
     var action: () -> Void  // Add a closure for button action
 
-    var body: some View {
+    public var body: some View {
         Button(action: {
             action()  // Execute the action when the button is pressed
         }) {
@@ -93,14 +97,14 @@ struct KeypadButton: View {
     }
 }
 
-struct KeypadButtonModel: Hashable {
+public struct KeypadButtonModel: Hashable, Sendable {
     let label: String?
     let icon: String?
     let backgroundColor: Color
     let textColor: Color
 }
 
-let keypadLayout: [[KeypadButtonModel]] = [
+public let keypadLayout: [[KeypadButtonModel]] = [
     [
         KeypadButtonModel(label: "C", icon: nil, backgroundColor: Color.red, textColor: .white),
         KeypadButtonModel(label: ".", icon: nil, backgroundColor: Color.black, textColor: .white),

@@ -7,12 +7,18 @@
 
 import SwiftUI
 
-struct ProductButton: View {
+public struct ProductButton: View {
     let title: String
     let color: Color
     var action: (() -> Void)? = nil
     
-    var body: some View {
+    init(title: String, color: Color, action: (() -> Void)? = nil) {
+        self.title = title
+        self.color = color
+        self.action = action
+    }
+    
+    public var body: some View {
         
         
         VStack(spacing: 0) {
@@ -43,26 +49,26 @@ struct ProductButtonView: View {
 }
 
 
-struct AppColors {
+public struct AppColors {
     // Background and general shades
-    static let backgroundPrimary = Color(hex: "#363B4A")   // Dark blue-grey
-    static let backgroundSecondary = Color(hex: "#19221A") // Dark grey-black
-    static let backgroundGreen = Color.green
-    static let textPrimary = Color.white        // Almost white
+    static public let backgroundPrimary = Color(hex: "#363B4A")   // Dark blue-grey
+    static public let backgroundSecondary = Color(hex: "#19221A") // Dark grey-black
+    static public let backgroundGreen = Color.green
+    static public let textPrimary = Color.white        // Almost white
     
     // Button and component colors
-    static let buttonBlue = Color(hex: "#3962E7")          // Vibrant blue
-    static let buttonGrey = Color(hex: "#566565")          // Muted grey-green
-    static let buttonHighlight = Color(hex: "#A98E76")     // Light brown
+    static public let buttonBlue = Color(hex: "#3962E7")          // Vibrant blue
+    static public let buttonGrey = Color(hex: "#566565")          // Muted grey-green
+    static public let buttonHighlight = Color(hex: "#A98E76")     // Light brown
     
     // Accent colors
-    static let accentBlueLight = Color(hex: "#7399CA")     // Light greyish blue
-    static let accentGreyDark = Color(hex: "#272B36")      // Dark slate grey
+    static public let accentBlueLight = Color(hex: "#7399CA")     // Light greyish blue
+    static public let accentGreyDark = Color(hex: "#272B36")      // Dark slate grey
 }
 
 // SwiftUI extension to easily use hex colors
 extension Color {
-    init(hex: String) {
+    public init(hex: String) {
         let scanner = Scanner(string: hex)
         _ = scanner.scanString("#") // Skip #
         var hexNumber: UInt64 = 0

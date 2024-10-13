@@ -7,19 +7,27 @@
 
 import SwiftUI
 
-enum PayButtonState {
+public enum PayButtonState {
     case disabled
     case enabled
 }
 
-struct PayButton: View {
+public struct PayButton: View {
     let total: Double
     let title: String
     var currency: Currency = .euro
     @State var state: PayButtonState = .disabled
     var action: (() -> Void)? = nil
     
-    var body: some View {
+    public init(total: Double, title: String, currency: Currency = .euro, state: PayButtonState = .enabled, action: (() -> Void)? = nil) {
+        self.total = total
+        self.title = title
+        self.currency = currency
+        self.state = state
+        self.action = action
+    }
+    
+    public var body: some View {
         
         ButtonVendora(title: title + " - " + currency.rawValue + " " + total.formatted(),
                       titleColor: (state == .enabled ? AppColors.textPrimary : Color.gray.opacity(0.9)),
@@ -47,7 +55,7 @@ struct PayButtonView: View {
     PayButtonView()
 }
 
-enum Currency: String {
+public enum Currency: String {
     case euro = "€"
     case dinar = "Dt"
     case dollar = "$"
